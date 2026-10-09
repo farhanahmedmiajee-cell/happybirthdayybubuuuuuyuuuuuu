@@ -1,0 +1,589 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>For My Nitu Pakhi 💗</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+* { box-sizing: border-box; }
+
+:root {
+  --pink: #ff79a8;
+  --deep: #b52f67;
+  --ink: #702543;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Hind Siliguri', sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at 15% 10%, #fff8fb, #ffeaf2 55%, #ffdce9);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "♡　✦　♡　✧　♡　✦　♡";
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(32px, 8vw, 90px);
+  letter-spacing: 10px;
+  color: #f0a0bd;
+  opacity: .12;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.wrap {
+  width: min(900px, 94%);
+  margin: auto;
+  padding: 28px 0 50px;
+  text-align: center;
+}
+
+.kicker {
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #bd5a82;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+h1 {
+  font-family: 'Playfair Display', 'Hind Siliguri', serif;
+  font-size: clamp(30px, 6vw, 48px);
+  line-height: 1.2;
+  margin: 8px 0;
+  color: #a52d61;
+}
+
+.subtitle {
+  margin: 0 auto 24px;
+  color: #9a5270;
+}
+
+.panel {
+  max-width: 520px;
+  margin: auto;
+  background: #ffffffd9;
+  border: 1px solid #ffd0e0;
+  box-shadow: 0 16px 50px #d45e8b20;
+  border-radius: 24px;
+  padding: clamp(20px, 5vw, 34px);
+  backdrop-filter: blur(8px);
+}
+
+label {
+  display: block;
+  font-weight: 700;
+  margin: 12px 0 6px;
+}
+
+input {
+  font: inherit;
+  width: min(390px, 100%);
+  padding: 13px 16px;
+  border: 1.5px solid #f2afc8;
+  border-radius: 14px;
+  background: #fffafd;
+  color: #75294a;
+  outline: none;
+}
+
+input:focus {
+  border-color: #d94d83;
+  box-shadow: 0 0 0 4px #ffb8d033;
+}
+
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 23px;
+  font: 700 15px 'Hind Siliguri', sans-serif;
+  color: white;
+  background: linear-gradient(135deg, #ff7da8, #c33d75);
+  box-shadow: 0 8px 18px #cf4c7c35;
+  cursor: pointer;
+  transition: .25s;
+}
+
+button:hover {
+  filter: saturate(1.12);
+  transform: translateY(-1px);
+}
+
+#message {
+  min-height: 25px;
+  font-size: 14px;
+  color: #b83269;
+  margin-top: 10px;
+}
+
+.hint {
+  font-size: 13px;
+  color: #a45d7b;
+  margin: 7px 0 14px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#surprise {
+  max-width: 760px;
+  margin: auto;
+}
+
+.envelope-stage {
+  padding: 12px 0 8px;
+}
+
+.envelope {
+  position: relative;
+  width: min(330px, 82vw);
+  height: 210px;
+  margin: 86px auto 12px;
+  cursor: pointer;
+  filter: drop-shadow(0 14px 14px #c85b8525);
+  isolation: isolate;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.env-back {
+  position: absolute;
+  inset: 0;
+  background: #f8a8c5;
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.letter-preview {
+  position: absolute;
+  z-index: 2;
+  left: 8%;
+  width: 84%;
+  height: 170px;
+  bottom: 12px;
+  background: #fffdf8;
+  border: 1px solid #f0c2d2;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  color: #b83269;
+  font-weight: 700;
+  box-shadow: 0 3px 9px #b8326920;
+  transition: transform .9s ease;
+  line-height: 1.5;
+}
+
+.env-front {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, #ffcadb, #f28db2);
+  clip-path: polygon(0 0, 50% 58%, 100% 0, 100% 100%, 0 100%);
+  border-radius: 8px;
+  z-index: 4;
+}
+
+.env-flap {
+  position: absolute;
+  inset: 0;
+  background: #ffd7e4;
+  clip-path: polygon(0 0, 100% 0, 50% 62%);
+  transform-origin: top;
+  transition: transform .8s ease;
+  z-index: 5;
+}
+
+.seal {
+  position: absolute;
+  z-index: 6;
+  left: 50%;
+  top: 52%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #c33d75;
+  color: white;
+  display: grid;
+  place-items: center;
+  font-size: 25px;
+  box-shadow: 0 4px 10px #9b2c592c;
+  transition: .3s;
+}
+
+/* Envelope opening animation */
+.open .env-flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.open .seal {
+  opacity: 0;
+  transform: translate(-50%, -20%) scale(.5);
+}
+
+.open .letter-preview {
+  transform: translateY(-145px);
+  z-index: 7;
+}
+
+/* FIX: Letter is outside envelope-stage, so use #surprise.opened */
+#letter {
+  display: none;
+  width: min(680px, 100%);
+  margin: 28px auto 0;
+  background: #fffdf9;
+  border: 1px solid #f5c8d8;
+  border-radius: 18px;
+  padding: clamp(20px, 5vw, 42px);
+  text-align: left;
+  box-shadow: 0 18px 45px #9d3c6420;
+}
+
+#surprise.opened #letter {
+  display: block;
+  animation: rise .9s ease both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(45px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#letter h2 {
+  text-align: center;
+  font-size: clamp(22px, 5vw, 32px);
+  color: #b83269;
+  margin: 0 0 20px;
+  line-height: 1.5;
+}
+
+#letter p {
+  font-size: 16px;
+  line-height: 1.95;
+  margin: 0 0 14px;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+#letter .center {
+  text-align: center;
+}
+
+#letter .big {
+  font-weight: 700;
+  color: #c03e75;
+  font-size: 18px;
+}
+
+#letter .love-list {
+  font-weight: 700;
+  color: #b83269;
+  line-height: 2.05;
+}
+
+#letter .signature {
+  text-align: right;
+  margin-top: 22px;
+  color: #b83269;
+  font-weight: 700;
+}
+
+.footer {
+  font-size: 12px;
+  color: #b87894;
+  margin-top: 26px;
+}
+
+.sparkle {
+  display: inline-block;
+  animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-5px) rotate(7deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .panel {
+    padding: 22px 16px;
+  }
+
+  .envelope {
+    height: 175px;
+    margin-top: 75px;
+  }
+
+  .letter-preview {
+    height: 145px;
+  }
+
+  #letter p {
+    font-size: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<main class="wrap">
+
+  <div class="kicker">A tiny surprise, made with love</div>
+
+  <h1>
+    For My Nitu Pakhi
+    <span class="sparkle">💗</span>
+  </h1>
+
+  <p class="subtitle">
+    একটা ছোট্ট খাম… আর তোমার জন্য অনেক অনেক ভালোবাসা 🥹🌷
+  </p>
+
+  <!-- PASSWORD SCREEN -->
+  <section class="panel" id="gate">
+    <div style="font-size:42px">💌</div>
+
+    <h2 style="margin:5px 0;color:#a52d61">
+      তোমার জন্য একটা সারপ্রাইজ!
+    </h2>
+
+    <p style="margin:0;color:#9a5270">
+      খামটা খুলতে আগে নিজের নাম আর আমাদের গোপন পাসওয়ার্ড দাও।
+    </p>
+
+    <form id="unlockForm">
+      <label for="name">তোমার নাম</label>
+
+      <input
+        id="name"
+        autocomplete="off"
+        placeholder="Farhan / Farhan Ahmed"
+        required
+      >
+
+      <label for="password">Secret Password</label>
+
+      <input
+        id="password"
+        inputmode="numeric"
+        type="password"
+        placeholder="পাসওয়ার্ড লিখো"
+        required
+      >
+
+      <div class="hint">
+        💡 Hint: (আমাদের class roll)
+      </div>
+
+      <button type="submit">
+        খামটা খুলে দাও 💖
+      </button>
+
+      <div id="message" role="status" aria-live="polite"></div>
+    </form>
+  </section>
+
+  <!-- SURPRISE SCREEN -->
+  <section id="surprise" class="hidden">
+
+    <div class="envelope-stage" id="envelopeStage">
+
+      <p style="font-weight:700;color:#b83269">
+        ইশশশ! তোমার জন্য একটা চিঠি এসেছে, পাখি! 🥹
+      </p>
+
+      <div
+        class="envelope"
+        id="envelope"
+        role="button"
+        tabindex="0"
+        aria-label="Open the envelope"
+      >
+        <div class="env-back"></div>
+
+        <div class="letter-preview">
+          <span>
+            শুধু তোমার জন্য লেখা চিঠি 💗
+            <br>
+            Open me, Nitu Pakhi 🥹
+          </span>
+        </div>
+
+        <div class="env-flap"></div>
+        <div class="env-front"></div>
+
+        <div class="seal">♥</div>
+      </div>
+
+      <p id="tapText" style="font-size:13px;color:#a45d7b">
+        খামের ওপর টোকা দাও, বাবুই পাখি 💌
+      </p>
+
+    </div>
+
+    <!-- LOVE LETTER -->
+    <article id="letter">
+
+      <h2>
+        🥹🥹 HAPPY BIRTHDAY AMAR NITU AMAR MARSHMALLOW AMAR LOKHHI PAKHI SHONA MOYNA BABUUUU 🥹🥹
+      </h2>
+
+      <p>পাখি কি ব্যাপার বুঝলাম না ,,🙂
+কিভাবে এত বড় হয়ে গেছো🥹,
+কত হলো তাইলে ওরে বাবা পাখি অনেক বড় হয়ে গেসে সত্যিই।</p>
+
+      <p>হ্যাঁ উচ্চতায় বড় হলেও তুমি আমার কাছে আমার সেই ছোট্ট cute, gulumulu koliza soto pakhiie।।</p>
+
+      <p>Muffin ইদানীং তোমাকে অনেক জালাচ্ছি তাই না koiza??🙂
+Muffin বাজে হয়ে গেছি,,🙂🙂
+যাইহোক সেটা ,
+আমি তোমাকে অনেক বেশি ভালোবাসি নিতু,,
+তোমাকে ছাড়া আসলেই কিছু ভালোলাগে না,,🙁,,
+যদি তোমার এডমিশন খুলনার বাইরে হয়ে যায় তখন আমার কি হবে koliza?🙁,,
+আচ্ছা সেটা পরে দেখা যাবে ইনশাআল্লাহ তুমি যেও না খুলন ছেড়ে ,,
+তুমি সুন্দর করে পড়ালেখা করো পাখি, আমি চাই তুমি সুন্দর করে পড়াশুনা করো lokkhi,,,</p>
+
+      <p>ওহ দেখাও bubu তোমাকে তো আমি happy birthday বলতেই ভুলে গেছি 🤦‍♂️🤦‍♂️🤦‍♂️</p>
+
+      <p class="center big">
+        "HAPPY BIRTHDAY BABUI PAKHI 🥹🥹🥹🥹"
+      </p>
+
+      <p>MUFFIN tomake onek besi valobashi lokhhi shona pakhi ...
+Muffin tomake jalabo na 🙁..
+I love you pakhi ....
+HAPPY BIRTHDAY PAKHI SHONA 🎂🎂🎂🎂🍥🍡</p>
+
+      <p class="center big">AGAIN,</p>
+
+      <p class="center love-list">
+        I LOVE YOU PAKHI<br>
+        I LOVE YOU NITU PAKHI..<br>
+        I LOVE YOU MARSHMALLOW<br>
+        I LOVE YOU AMAR AFA<br>
+        I LOVE YOU AMAR KOLIZA<br>
+        I LOVE YOU AMAR MOYNA PAKHI<br>
+        I LOVE YOU AMAR BABUI PAKHI<br>
+        I LOVE YOU AMAR SOBTHEKE CUTE BAE..
+      </p>
+
+      <p class="center big">AGAIN,</p>
+
+      <p class="center big">
+        🌼🌼🏵️🏵️ HAPPY BIRTHDAY AMAR NITU LOKKHI PAKHI 🌼🌼🏵️
+      </p>
+
+      <p class="signature">
+        Tomar Muffin-er pokkho theke onek onek bhalobasha 💗
+        <br>
+        Forever your Muffin 🧁
+      </p>
+
+    </article>
+
+  </section>
+
+  <div class="footer">
+    Made with all my love, just for you ♡
+  </div>
+
+</main>
+
+<script>
+const form = document.getElementById('unlockForm');
+const message = document.getElementById('message');
+const gate = document.getElementById('gate');
+const surprise = document.getElementById('surprise');
+const stage = document.getElementById('envelopeStage');
+const envelope = document.getElementById('envelope');
+const tapText = document.getElementById('tapText');
+const letter = document.getElementById('letter');
+
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const name = document.getElementById('name')
+    .value.trim().toLowerCase().replace(/\s+/g, ' ');
+
+  const password = document.getElementById('password').value.trim();
+
+  const validName = [
+    'farhan',
+    'farhan ahmed',
+    'farhan ahmed miajee'
+  ].includes(name);
+
+  if (validName && password === '5207') {
+    gate.classList.add('hidden');
+    surprise.classList.remove('hidden');
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+
+  } else {
+    message.textContent =
+      'উফস! নাম অথবা পাসওয়ার্ড মিলছে না, আবার চেষ্টা করো 🥺';
+  }
+});
+
+function openEnvelope() {
+  if (stage.classList.contains('open')) return;
+
+  // Open the envelope animation
+  stage.classList.add('open');
+
+  // FIX: Add class to the parent that contains the letter
+  surprise.classList.add('opened');
+
+  tapText.textContent =
+    'চিঠিটা তোমার জন্য, পাখি… অনেক ভালোবাসা 💗';
+
+  // Scroll to the revealed letter
+  setTimeout(function () {
+    letter.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }, 650);
+}
+
+envelope.addEventListener('click', openEnvelope);
+
+envelope.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    openEnvelope();
+  }
+});
+</script>
+
+</body>
+</html>
